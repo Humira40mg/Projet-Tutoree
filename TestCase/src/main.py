@@ -33,7 +33,7 @@ for image in listdir("TestCase/img"):
     
     sleep(1)
 
-resultPath = f"resultat-{config["model"]}-{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json"
+resultPath = f"resultat-{config['model']}-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"
 with open(f"TestCase/output/{resultPath}", "w", encoding="utf-8") as f:
         json.dump(resultats, f, ensure_ascii=False, indent=4)
 
