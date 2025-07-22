@@ -7,38 +7,44 @@ from datetime import datetime
 
 resultats: dict = {}
 
-#chargement config
+# Chargement config
 with open("TestCase/config.json", "r", encoding="utf-8") as f:
     config: dict = json.load(f)
 
-debut = time.time()
-debut2 = time.time()
-#Test Pour Chaque image
+debut_global = time.time()
+
+# Test pour chaque image
 for image in listdir("TestCase/img"):
 
-    absolutePathImg = path.abspath(image)
+    absolutePathImg = path.abspath(path.join("TestCase/img", image))
 
     payload = {
-                "model": config["model"],
-                "system": config["systemprompt"],
-                "prompt": f"{absolutePathImg} {config['testprompt']}",
-                "stream": False
-            }
-    response = requests.post(f"http://localhost:11434/api/generate", json=payload)
+        "model": config["model"],
+        "system": config["systemprompt"],
+        "prompt": f"{absolutePathImg} {config['testprompt']}",
+        "stream": False
+    }
+
+    debut = time.time()
+    response = requests.post("http://localhost:11434/api/generate", json=payload)
+    fin = time.time()
+
     if response.ok:
-        resultats[image] = response.json()["response"].strip()
-        print(f"Test pour {image} terminé")
+        resultats[image] = {
+            "response": response.json()["response"].strip(),
+            "temps_analyse": round(fin - debut, 3)
+        }
+        print(f"Test pour {image} terminé en {round(fin - debut, 3)}s")
     else:
-        raise Exception(f"Error Ollama API: {response.text}")
-    
+        raise Exception(f"Erreur Ollama API: {response.text}")
+
     sleep(1)
 
+# Enregistrement des résultats
 resultPath = f"resultat-{config['model']}-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"
 with open(f"TestCase/output/{resultPath}", "w", encoding="utf-8") as f:
-        json.dump(resultats, f, ensure_ascii=False, indent=4)
+    json.dump(resultats, f, ensure_ascii=False, indent=4)
 
-fin2 = time.time()
-length2 = fin2 - debut2
-print(f"Temps de traitement: {fin2-debut2}")
-
-
+# Affichage temps global
+fin_global = time.time()
+print(f"Temps total de traitement: {round(fin_global - debut_global, 2)}s")
