@@ -1,4 +1,5 @@
 import json
+import time
 import requests
 from os import listdir, path
 from time import sleep
@@ -10,6 +11,8 @@ resultats: dict = {}
 with open("TestCase/config.json", "r", encoding="utf-8") as f:
     config: dict = json.load(f)
 
+debut = time.time()
+debut2 = time.time()
 #Test Pour Chaque image
 for image in listdir("TestCase/img"):
 
@@ -30,6 +33,15 @@ for image in listdir("TestCase/img"):
     
     sleep(1)
 
+fin = time.time()
+length = fin - debut
+print(f"Temps de traitement: {fin-debut}")
 resultPath = f"resultat-{config["model"]}-{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json"
 with open(f"TestCase/output/{resultPath}", "w", encoding="utf-8") as f:
         json.dump(resultats, f, ensure_ascii=False, indent=4)
+
+fin2 = time.time()
+length2 = fin2 - debut2
+print(f"Temps de traitement: {fin2-debut2}")
+
+
