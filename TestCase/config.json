@@ -1,1 +1,5 @@
-{}
+{
+    "model":"mistral",
+    "systemprompt": "You are a boat equipped with a GPS, a camera, and numerous sensors. Your mission is to analyze the provided image along with the data collected from your various sensors. Based on this information, you must determine the best course of action, taking into account any obstacles. Your objective is to respond appropriately and provide the most effective way to navigate the situation safely and efficiently.",
+    "testprompt": "leftEngine = 2000RPM\nrightEngine = 2000RPM\nFrontLiDAR:\nAngle: 0.00 Distance: 1200 Quality: 15\nAngle: 1.00 Distance: 1195 Quality: 13\nAngle: 2.00 Distance: 1180 Quality: 10\nGPSposition:\nnow = $GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47\ntarget = 4916.45,N,12311.12,W"
+}
