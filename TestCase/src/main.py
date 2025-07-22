@@ -18,7 +18,7 @@ for image in listdir("TestCase/img"):
     payload = {
                 "model": config["model"],
                 "system": config["systemprompt"],
-                "prompt": f"{absolutePathImg} {config["testprompt"]}",
+                "prompt": f"{absolutePathImg} {config['testprompt']}",
                 "stream": False
             }
     response = requests.post(f"http://localhost:11434/api/generate", json=payload)
@@ -30,6 +30,6 @@ for image in listdir("TestCase/img"):
     
     sleep(1)
 
-resultPath = f"resultat-{config["model"]}-{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json"
+resultPath = f"resultat-{config['model']}-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"
 with open(f"TestCase/output/{resultPath}", "w", encoding="utf-8") as f:
         json.dump(resultats, f, ensure_ascii=False, indent=4)
