@@ -18,10 +18,15 @@ for image in listdir("TestCase/img"):
 
     absolutePathImg = path.abspath(path.join("TestCase/img", image))
 
+    image_b64 = None
+    with open(absolutePathImg, "rb") as f:
+        image_b64 = f.read().encode("base64").decode("utf-8")
+
     payload = {
         "model": config["model"],
         "system": config["systemprompt"],
         "prompt": f"{absolutePathImg} {config['testprompt']}",
+        "images": [image_b64],
         "stream": False
     }
 
