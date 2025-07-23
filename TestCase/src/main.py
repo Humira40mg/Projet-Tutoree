@@ -25,7 +25,7 @@ for image in listdir("TestCase/img"):
     payload = {
         "model": config["model"],
         "system": config["systemprompt"],
-        "prompt": f"{absolutePathImg} {config['testprompt']}",
+        "prompt": config['testprompt'],
         "images": [image_b64],
         "stream": False
     }
