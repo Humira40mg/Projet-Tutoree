@@ -1,6 +1,7 @@
 import json
 import time
 import requests
+import base64
 from os import listdir, path
 from time import sleep
 from datetime import datetime
@@ -20,7 +21,7 @@ for image in listdir("TestCase/img"):
 
     image_b64 = None
     with open(absolutePathImg, "rb") as f:
-        image_b64 = f.read().encode("base64").decode("utf-8")
+        image_b64 = base64.b64encode(f.read()).decode("utf-8")
 
     payload = {
         "model": config["model"],
