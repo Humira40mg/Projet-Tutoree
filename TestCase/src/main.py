@@ -44,7 +44,7 @@ for image in listdir("TestCase/img"):
     else:
         raise Exception(f"Erreur Ollama API: {response.text}")
 
-    sleep(1)
+    sleep(60)
 
 # Enregistrement des résultats
 resultPath = f"resultat-{config['model']}-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"
