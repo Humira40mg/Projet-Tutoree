@@ -9,7 +9,7 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 import torch
 
 # -----------------------------
-# 1️⃣ Configuration
+# Configuration
 # -----------------------------
 print("Loading Configuration")
 MODEL_NAME = "Qwen/Qwen3-0.6B" #Model a fine-tune VOIR Hugging Face pour les modèles
@@ -20,7 +20,7 @@ MAX_LENGTH = 1024  # tokens max
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # -----------------------------
-# 2️⃣ Charger datasets
+# Charger datasets
 # -----------------------------
 jsonl_ds = load_dataset("json", data_files=JSONL_FILE)["train"]
 
@@ -35,14 +35,14 @@ def convert_convo(example):
 dataset = jsonl_ds.map(convert_convo)
 
 # -----------------------------
-# 3️⃣ Tokenizer
+# Tokenizer
 # -----------------------------
 print("Loading tokenizer")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
 
 # -----------------------------
-# 4️⃣ Model & QLoRA setup
+# Model & QLoRA setup
 # -----------------------------
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -58,7 +58,7 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto"
 )
 
-# ⚡ Préparer le modèle pour int8/4-bit + LoRA
+# Préparer le modèle pour int8/4-bit + LoRA
 model = prepare_model_for_kbit_training(model)
 
 lora_config = LoraConfig(
@@ -72,7 +72,7 @@ lora_config = LoraConfig(
 model = get_peft_model(model, lora_config)
 
 # -----------------------------
-# 5️⃣ Tokenization dataset
+# Tokenization dataset
 # -----------------------------
 print("Tokenization of the dataset")
 def tokenize_function(examples):
@@ -87,7 +87,7 @@ tokenized_dataset = dataset.map(tokenize_function, batched=True, remove_columns=
 data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
 
 # -----------------------------
-# 6️⃣ Training
+# Training
 # -----------------------------
 print("Training model")
 training_args = TrainingArguments(
@@ -114,7 +114,7 @@ trainer.train()
 print("Model trained")
 
 # -----------------------------
-# 7️⃣ Sauvegarder le modèle
+# Sauvegarder le modèle
 # -----------------------------
 model.save_pretrained(OUTPUT_DIR)
 tokenizer.save_pretrained(OUTPUT_DIR)
