@@ -1,0 +1,22 @@
+Mardi 15 Juillet
+3h
+
+Essaie de se connecter en ssh chez moi, sur mon réseau : SUCCESS.
+
+M. Quiniou nous a informer qu'il y'a eu des problemes sur le réseau du fablab pendant les phases de tests precedentes. Ce matin nous tentons une derniere tentative de connection en ssh au fablab. 
+
+C'est un succès.
+On va enfin pouvoir avancer.
+
+Nouvel objectif : boot depuis un SSD du module NVMe.
+	
+Pour le moment les ssd ne sont pas détectable. Peut etre que le module est mal branché
+Le problème était que le cable était a l'envers.
+
+On essaye donc d'abord de clone ma clef usb vers un des SSD. On essaye d'abord avec un outil git : https://github.com/billw2/rpi-clone
+Mais le processus a été annulé en cours de route. On a donc essayer de finir a la main en montant nous meme les partitions. 
+
+On fait en sorte que le raspberry boot en priortité sur le NVME, on redemarre sans la clef usb. 
+Il ne se passe rien. On essaye maintenant de cloner la clef avec sudo dd
+
+Et après une longue attente (~15min), c'est un succès. On peut booter directement depuis le SSD sans la clef de boot d'origine.

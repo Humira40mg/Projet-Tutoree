@@ -1,0 +1,32 @@
+Mardi 5 Aout
+~1h
+
+Test rapide de certain modeles. avec le prompt :If there is a rock in front of a boat that you drive. how would you react ?
+
+llama3.2 a proposé une solution très convaincante, car il a parler d'analyser les autres données avant de prendre la bonne decision. 
+
+```
+That's an interesting scenario!
+
+Assuming I'm a safe driver and the road conditions are normal, if there was a large rock or boulder in my path while driving the
+boat (I assume it means a boat, not a car?), I would take the following steps:
+
+1. **Stay calm**: My initial reaction would be to remain calm and composed, assessing the situation quickly.
+2. **Assess the obstacle**: I'd check if the rock is large enough to pose a significant risk to the safety of me, my passengers,
+or the boat's structure.
+3. **Adjust speed and course**: If the rock is not too large, I might slow down slightly and alter my course to avoid it
+entirely.
+4. **Take evasive action**: If there's no time to adjust speed and course, I'd take evasive action by steering the boat
+sharply to one side or using the rudder to steer around the obstacle. This could involve making a quick turn or applying gentle
+pressure on the tiller/steering mechanism.
+5. **Be prepared for impact (if necessary)**: If the rock is too large or there's not enough time to avoid it, I'd prepare myself
+for potential contact by:
+ * Keeping my hands firmly on the controls
+ * Preparing to take corrective action
+ * Being ready to apply gentle pressure on the tiller/steering mechanism to mitigate the impact
+6. **Monitor the situation**: After navigating around or through the obstacle, I'd keep a close eye on the boat's speed and
+course to ensure we're back on track.
+
+It's worth noting that this scenario is quite unlikely in most everyday situations, as rocks aren't typically hazards on boats
+unless they've been washed up by strong winds or storms.
+```

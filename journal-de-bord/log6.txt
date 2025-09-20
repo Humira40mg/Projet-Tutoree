@@ -1,0 +1,10 @@
+Mercredi 23 Juillet
+~3h
+
+On est allé acheter une carte sd 128G - 100MB/S (on hésitait avec une 64G - 170MB/S mais le raspberry peut lire entre 50 et 90MB/S max apparement)
+
+Finition du script de tests. creation d'un script qui compare les resultats par rapport aux temps moyen d'execution, et temps total.
+
+réuninon.
+
+Test de moondream.

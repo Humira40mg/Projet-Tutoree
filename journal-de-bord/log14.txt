@@ -1,0 +1,9 @@
+Mercredi 27 aout
+~3h
+
+Tentative d'installation du hailo dataflow compiler sur une VM debian. Meme erreur rencontrée que sur mon Arch Linux. Tentative de fix en installant autrement la dependence qui fesait crash, succès, on l'a installé.
+
+Reunion
+
+On ne peux pas recompiler de onnx directement en hef, il faut avant passer par le hailo model optimizer, mais on ne trouve pas ce package.
+

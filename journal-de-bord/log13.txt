@@ -1,0 +1,11 @@
+Vacances d'Aout
+???h
+
+Le AI HAT+ 26 TOPS De Hailo ne peut faire tourner que des modèles compilées en .hef
+Pour compiler un modele de onnx vers hef il faut installer sur une machine le hailo dataflow compiler (disponible uniquement sur linux). Après de multiples tentatives, de changement de versions de python, de creations d'environnement virtuel, il refuse toujours de s'installer... Je suis sur Linux pourtant. Peut être devons nous essayer de l'installer sur une VM ?
+
+  ERROR: Failed building wheel for pygraphviz
+Failed to build pygraphviz
+ERROR: Could not build wheels for pygraphviz, which is required to install pyproject.toml-based projects
+
+A part ça je me suis grandement renseigné sur le "Fine Tunning" de LLM. Et c'est une étape presque obligatoire pour ce projet selon moi. Car c'est plus simple que ce que l'on pense. On peux entrainer le llm sur ce qu'on attend vraiment de lui. Il y'a deux façon principales pour l'entrainer. 1 lui donner du texte brut, c'est la connaissance, les INFORMATIONS qu'il doit apprendre. 2 du dialogue (input/output), c'est ce qui permet de changer la formulation de ses reponses, on peux donc lui apprendre a repondre d'une certaine façon selon l'input. 

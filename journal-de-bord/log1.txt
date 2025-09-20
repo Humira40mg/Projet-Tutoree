@@ -1,0 +1,17 @@
+Mardi 8 Juillet
+2h
+
+Lecture de la documentation du Module NVMe, On essaye d'installer le rasp OS dessus (aucun de nous n'a penser a amener le materiel necessaire donc on galère).
+On a pas reussi a se connecter en ssh aujourd'hui. 
+Les hypothèse pour les causes du problèmes sont: 
+	la clée USB utilisée est defectueuse
+	les paramètres réseaux
+	le raspberryPi ne peux pas boot pour une certaine raison. 
+		(Peut etre que vu qu'il ne detecte pas de carte SD alors il essaye de boot sur le NVMe au lieu de la clef usb)
+		(Ou alors le module fait crash lors du lancement)
+		
+On reessaira demain avec differents parametres.
+
+documentation Module NVMe :
+https://learn.pimoroni.com/article/getting-started-with-nvme-base-duo#installing-an-os
+
