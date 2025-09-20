@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Script qui va lancer automatiquement les tests sur les differents LLM multimodaux (vision)
+
 sudo apt install jq
 
 # Chemin vers le fichier JSON

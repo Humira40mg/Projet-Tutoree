@@ -1,0 +1,2 @@
+// exemple de format attendu pour l'entrainement
+{"messages": [{"role": "user", "content": "Je suis à 74% sûr qu'il y'a un bateau à 3h."}, {"role": "assistant", "content": "J'utilise un outil pour tourner à 30 degrée babord."}]}
