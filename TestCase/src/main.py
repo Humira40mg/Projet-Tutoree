@@ -1,3 +1,8 @@
+"""
+Ce script va faire analyser au modèle entré dans le fichier config
+chaque image et devra reagir en fonction des prompts données avec une 
+mesure du temps prit pour répondre. Enregistrement des résultats dans TestCase/output
+"""
 import json
 import time
 import requests

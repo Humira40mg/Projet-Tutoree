@@ -1,0 +1,239 @@
+Mercredi 3 septembre
+~2h30
+
+Tentative de conversion de yolov8n.onnx vers une version hef ce qui nous permettrais d'être sur de pouvoir entrainer yolo sur nos propres données. On teste d'abords la commande pour parser le fichier. Mais la commande requiere un GPU et le machine sur laquel on a reussi a arrivé jusqu'à cette étape n'en a pas. On vas donc arrêter là pour cet objectif. On passe donc à un essaie de yolov8n precompilé en hef. 
+
+On galère énormément. On ne compte plus le nombre de pages 'erreur 404' lors de nos recherches sur la documentation. Nous sommes choqué par la dispertions des informations que nous cherchons. Quand on crois avoir trouvé quelque chose, ça ne marche pas.
+
+Nos recherches on trouvées pour conclusion que l'OS que nous avons choisi (Rasberrypi OS lite 64bit) provoque une incompatibilitée sur la version de glibc. Ce qui empêche de charger les modules attendus pour l'utilisation du Hailo AI HAT+. Il faudrait changer l'os pour ubuntu, ou crée une image docker (donc tout recommencer dans les 2 cas).
+
+Pour se changer les idées on a fais quelques tests avec le flag --verbose pour ollama. Il permet de faire un rapport sur les vitesses. On s'intersse a la vitesse de generation (eval rate (token/secondes)). D'après les exemples ci-dessous on vois qu'en générale. Plus le modèle est lourd, plus il est lent. Sur le raspberry on pourrait techniquement faire tourner gpt-oss:20b (14G) (Bien noté sur les benchmarks) mais il serais inutilisable à cause de sa lenteur.
+
+
+Quelques exemples :
+
+
+admin@raspberrypi:~ $ ollama run qwen3:0.6b --verbose
+>>> Explique moi le fonctionnement d'un Raspberry PI.
+Thinking...
+Okay, the user is asking me to explain the function of a Raspberry Pi. Let me start by recalling what I know. The Raspberry Pi is
+a popular single-board computer, right? It's used for various things like gaming, programming, or home automation.
+
+First, I should mention that it's a small, affordable device. It's based on the ARM architecture, which is efficient for
+processing tasks. The user might not know the basics, so I need to break it down step by step.
+
+I should start with the basics: the Raspberry Pi has a 5V power supply, an internal processor, and a USB port. It's small, so
+it's easy to install. Then, the main components: the CPU, memory, and storage. They can run different software, so the user might
+be interested in how to install programs or use it for specific tasks.
+
+Next, the versatility. The Raspberry Pi is used in a variety of applications, like home automation, gaming, or programming. I
+should mention that it's a good platform for coding, especially for beginners. Also, its portability makes it useful for projects
+that require a small space, like a home server or a small device.
+
+I need to make sure I explain the components clearly. Maybe list them: CPU, RAM, storage. Also, mention that it's open-source,
+which adds to its appeal. Oh, and the fact that it's used in many different fields, like IoT or education.
+
+Wait, the user might be a beginner, so I should avoid technical jargon. Instead, explain how it works in simple terms. For
+example, how the CPU processes data, or how the storage handles files. Also, maybe mention that it's a good tool for developing
+apps, which is a common use case.
+
+I should also highlight the different models, like the Raspberry Pi 4, to show that there are multiple options. But maybe the
+user is just asking for a basic overview, so staying general is better.
+
+Finally, a quick example: using it to run a simple program or set up a home automation system. That should help the user
+understand its functionality. Let me check if I covered all key points and if I'm clear in explaining each part.
+...done thinking.
+
+Le Raspberry Pi est un appareil portabilité, affordable et basé sur l’architecture ARM, capable de fonctionner à 5V. Voici sa
+structure clé :
+
+1. **Compagnie et architecture** :
+   - Il est un **single-board computer** (SBC) basé sur l’architecture ARM, qui permet de traiter des tâches complexes avec une
+puissance efficace.
+   - Il dispose d’un processeur (CPU), de mémoire (RAM) et de stockage (disque) pour accéder aux ressources.
+
+2. **Paramètres clés** :
+   - **Puissance** : 5V (vérifiez l’article pour les spécifications).
+   - **Processor** : CPU (ex. : Pi Zero, Pi 3, Pi 4).
+   - **RAM** : 1 à 4 GB (puit être rempli par d’autres appareils).
+   - **Stockage** : USB SD ou disque, pouvant stocker des fichiers.
+
+3. **Usages courants** :
+   - **Gaming** : Pour jouer aux jeux à l’œil ou avec des outils de développement.
+   - **Développement** : Créer des applications (web, mobile, etc.) via Python ou Scratch.
+   - **Éducation** : Pour enseigner les bases de programmation, l’intelligence artificielle ou la programmation en C++.
+   - **IoT** : Utiliser comme serveur pour les appareils numériques, les systèmes de maison ou les dispositifs automatisés.
+
+4. **Flexibilité** :
+   - Son design simple permet de créer des outils simples pour des projets de travail (ex. : un micro-contrôleur pour un
+micro-ordinateur).
+   - Son open-source et son adaptabilité rendent le Raspberry Pi un outil très apprécié pour des applications variées.
+
+En résumé, le Raspberry Pi est une solution innovante pour des projets simples, combinant efficacité et flexibilité.
+
+total duration:       46.973593568s
+load duration:        62.221793ms
+prompt eval count:    21 token(s)
+prompt eval duration: 372.565009ms
+prompt eval rate:     56.37 tokens/s
+eval count:           909 token(s)
+
+
+
+
+
+
+
+
+
+
+ollama run llama3.2:3b --verbose
+>>> Explique moi le fonctionnement d'un Raspberry PI.
+Bonjour ! Je serais ravi de vous aider à comprendre comment fonctionne un Raspberry Pi.
+
+Un Raspberry Pi est une plateforme informatique miniaturisée, conçue pour être facile à utiliser et accessible à tous. Il s'agit
+d'une petite carte mémoire avec des composants essentiels qui permettent de créer un système informatique complet. Voici les
+principaux éléments du fonctionnement d'un Raspberry Pi :
+
+**Les composants principaux :**
+
+1. **Processus central (CPU)** : Le CPU est l'intelligence électronique qui exécute les instructions et gère les tâches. Les
+Raspberry Pi utilisent des processeurs ARM-based, conçus pour être efficaces et économiques en énergie.
+2. **Mémoire RAM** : La mémoire RAM (Random Access Memory) est un espace de stockage temporaire qui permet à l'ordinateur
+d'accéder rapidement aux données. Les Raspberry Pi ont une capacité de mémoire RAM allant de 512 MHz à 1,5 Go.
+3. **Carte graphique** : La carte graphique (GPU) est responsable des opérations visuelles et du rendu d'images. Les Raspberry Pi
+utilisent des cartes graphiques de type VideoCore IV, conçues pour être économiques en énergie.
+4. **Système d'exploitation** : Le système d'exploitation est l'environnement dans lequel s'exécute l'ordinateur. Les Raspberry
+Pi peuvent utiliser différents systèmes d'exploitation tels que Raspbian (basé sur Debian), Windows 10 IoT ou Linux.
+5. **Connexions peripheriques** : Les Raspberry Pi ont plusieurs connexions pour les périphériques externes, telles que :
+ * Sorties HDMI et USB
+ * Port série (RS-232)
+ * Connexion Wi-Fi et Bluetooth
+
+**Fonctionnement :**
+
+Lorsque vous connectez un Raspberry Pi à une source de pouvoir, il peut commencer à fonctionner immédiatement. Voici les étapes
+générales du processus :
+
+1. Le système d'exploitation est initialisé et chargé dans la mémoire RAM.
+2. L'ordinateur recherche les périphériques externes, tels que le clavier, la souris et les appareils de stockage.
+3. Une fois les périphériques détectés, l'ordinateur commence à exécuter des instructions et à effectuer des opérations.
+4. Les données sont stockées dans la mémoire ROM (Random Access Memory) ou sur un périphérique externe.
+
+**Applications :**
+
+Les Raspberry Pi sont très polyvalents et peuvent être utilisés pour diverses applications, telles que :
+
+* **Systèmes d'automatisation** : les Raspberry Pi peuvent être utilisés pour créer des systèmes d'automatisation pour les
+projets de maison ou pour gérer les machines.
+* **Appareils IoT** : les Raspberry Pi peuvent être utilisés pour créer des appareils Internet des objets (IoT) qui communique
+avec le réseau et effectuent des tâches automatiques.
+* **Études scientifiques** : les Raspberry Pi sont très populaires parmi les étudiants et les chercheurs, car ils offrent une
+plateforme abordable pour réaliser des projets de recherche et d'expérimentation.
+
+En résumé, un Raspberry Pi est une plateforme informatique miniaturisée qui peut être utilisée pour diverses applications. Ses
+composants principaux incluent un processeur central, une mémoire RAM, une carte graphique et un système d'exploitation. Les
+Raspberry Pi sont très polyvalents et peuvent être utilisés pour créer des systèmes d'automatisation, des appareils IoT et des
+plateformes de recherche scientifique.
+
+total duration:       2m34.088605577s
+load duration:        78.852458ms
+prompt eval count:    36 token(s)
+prompt eval duration: 3.855209311s
+prompt eval rate:     9.34 tokens/s
+eval count:           822 token(s)
+eval duration:        2m30.153498099s
+eval rate:            5.47 tokens/s
+
+
+
+
+
+
+
+admin@raspberrypi:~ $ ollama run gemma3n:e2b --verbose
+>>> Explique moi le fonctionnement d'un Raspberry PI.
+Absolument ! Voici une explication détaillée du fonctionnement d'un Raspberry Pi, en décomposant ses composants clés et comment
+ils interagissent pour faire fonctionner un ordinateur compact et polyvalent.
+
+**Qu'est-ce qu'un Raspberry Pi ?**
+
+Le Raspberry Pi est un petit ordinateur de carte unique (Single-Board Computer - SBC) conçu pour être abordable et facile à
+utiliser. Il est très populaire auprès des étudiants, des hobbyistes, des développeurs et des professionnels qui souhaitent
+explorer le monde de l'informatique, de l'Internet des objets (IoT) et de la robotique.
+
+**Composants clés et leur fonctionnement :**
+
+1.  **La carte elle-même (la "carte mère") :**
+
+    *   **Microcontrôleur (CPU) :** C'est le "cerveau" du Raspberry Pi. Il exécute les instructions et gère toutes les
+opérations. Les modèles les plus courants utilisent un processeur ARM (Advanced RISC Machine), ce qui le rend très efficace en
+termes de consommation d'énergie. Les modèles les plus récents utilisent des processeurs ARM de plus en plus puissants.
+    *   **Mémoire vive (RAM) :** C'est la mémoire temporaire où le système peut stocker les données qu'il utilise activement.
+Plus la RAM est importante, plus le Raspberry Pi peut gérer des tâches complexes et exécuter plusieurs applications
+simultanément.
+    *   **Stockage :**
+        *   **Carte microSD :** C'est le support de stockage principal. Vous y installez le système d'exploitation (comme
+Raspberry Pi OS, Ubuntu, etc.) et toutes vos données.
+        *   **Stockage intégré (sur certains modèles) :** Certains modèles plus récents ont un stockage flash intégré, ce qui
+peut être pratique pour une utilisation à long terme.
+    *   **Connecteurs :**
+        *   **USB :** Pour connecter des périphériques externes comme des clés USB, des écrans, des claviers, des souris, etc.
+        *   **HDMI :** Pour afficher une image sur un écran.
+        *   **Ethernet :** Pour une connexion réseau filaire (plus stable qu'une connexion Wi-Fi).
+        *   **GPIO (General Purpose Input/Output) :** C'est la partie la plus intéressante pour les projets. Les GPIO sont des
+broches physiques sur la carte qui permettent de connecter des composants électroniques externes, comme des capteurs, des
+moteurs, des LEDs, etc.
+        *   **Prise d'alimentation :** Pour alimenter la carte.
+
+2.  **Le système d'exploitation (OS) :**
+
+    *   Le Raspberry Pi utilise un système d'exploitation, généralement basé sur Linux (comme Raspberry Pi OS, Ubuntu, etc.).
+C'est le logiciel qui gère l'ensemble des ressources matérielles et permet aux applications de fonctionner.
+    *   L'OS est installé sur la carte microSD et est démarré lorsque vous allumez le Raspberry Pi.
+
+3.  **Les périphériques d'entrée/sortie (E/S) :**
+
+    *   **Entrée :** Les périphériques d'entrée permettent au Raspberry Pi de recevoir des données, comme un clavier, une souris,
+un microphone, un capteur.
+    *   **Sortie :** Les périphériques de sortie permettent au Raspberry Pi de renvoyer des données, comme un écran, un
+haut-parleur, un moteur.
+
+**Comment ça fonctionne en pratique :**
+
+1.  **Démarrage :** Lorsque vous allumez le Raspberry Pi, le système d'exploitation démarre à partir de la carte microSD.
+2.  **Gestion des ressources :** L'OS gère les ressources matérielles du Raspberry Pi, comme le CPU, la RAM, le stockage, les
+périphériques d'entrée/sortie.
+3.  **Exécution des applications :** Vous pouvez installer des applications sur le Raspberry Pi, comme un navigateur web, un
+éditeur de texte, un logiciel de traitement d'image, etc. Ces applications s'exécutent sur le CPU et utilisent les ressources
+matérielles pour fonctionner.
+4.  **Communication avec les périphériques :** Les applications peuvent communiquer avec les périphériques d'entrée/sortie via
+les ports USB, HDMI, Ethernet, ou via les broches GPIO.
+5.  **Projets :** Les broches GPIO permettent de connecter des capteurs, des moteurs, des LEDs, etc. pour créer des projets
+interactifs, comme des robots, des systèmes d'automatisation, des systèmes de surveillance, etc.
+
+**En résumé :**
+
+Le Raspberry Pi est un ordinateur compact qui utilise un microcontrôleur ARM, de la RAM, un stockage et des connecteurs pour se
+connecter à des périphériques externes. Il exécute un système d'exploitation basé sur Linux et permet d'exécuter des
+applications, de communiquer avec des périphériques et de réaliser des projets électroniques.
+
+**Pourquoi le Raspberry Pi est-il si populaire ?**
+
+*   **Abordable :** Il est relativement peu cher par rapport à d'autres ordinateurs.
+*   **Facile à utiliser :** Il est facile à installer et à programmer.
+*   **Polyvalent :** Il peut être utilisé pour une grande variété de projets.
+*   **Communauté active :** Il existe une grande communauté d'utilisateurs et de développeurs qui peuvent vous aider si vous avez
+des questions ou des problèmes.
+
+J'espère que cette explication est claire. N'hésitez pas à me poser d'autres questions si vous souhaitez approfondir un aspect
+particulier du fonctionnement d'un Raspberry Pi.
+
+total duration:       3m7.743454358s
+load duration:        404.636132ms
+prompt eval count:    26 token(s)
+prompt eval duration: 2.096498164s
+prompt eval rate:     12.40 tokens/s
+eval count:           1207 token(s)
+eval duration:        3m5.241416526s
+eval rate:            6.52 tokens/s <--- On peut voir que malgré son poids il reste assez rapide en comparaison de llama3.2, gemma3n est fais pour tourner sur de petites machines.

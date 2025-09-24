@@ -1,0 +1,8 @@
+Mercredi 6 Aout
+~2h
+
+Le retour camera avec yolo fonctionne on peux detecter des personnes et d'autres elements. Il sera nécessaire de l'entrainer sur des elements qu'il peux rencontrer genre des rocher (la il vois un donnut ou un ours quand il detecte un rocher). il detecte bien les bateaux et personnes. il ne detecte pas du tout les arbres.
+
+On a aussi réfléchi et décider de faire travailler un model d'estimation de distance (pour avoir un autre pov que celui du lidar) avec yolo et le LLM. cela permettrai de detecter un obscale, quel est cet obstacle et a quel distance il se trouve.
+
+Il faudra faire en sorte d'enregistrer la route prise pour éviter de se perdre. Pour une meilleure chance de succès il faudra donner a l'ia une route de points gps a suivre, ou une carte de la zone. 

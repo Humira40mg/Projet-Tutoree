@@ -1,0 +1,13 @@
+Mercredi 9 Juillet
+3h
+
+Réalisation de plusieurs tests. 
+	boot avec une nouvelle clef usb. ECHEC
+	boot avec une carte SD ECHEC
+on a decider de brancher un ecran pour voir ce qu'il se passe.
+l'adresse IP du pi est 127.0.1.1 qui est different de notre masque (192.168.45.XXX). 
+Le pi trouve bien les maj avec sudo apt update, donc il est bien connecté au réseau.
+Quand on essaye de se connecter en ssh sur admin@127.0.1.1 ça nous dit acces refusé.
+
+on a regardé si on pouvais monter le module ecran tactile, mais il n'est pas pratique et n'est clairement pas disigner pour l'utilisation que l'on veut en faire. Nous on veux juste voir ce qu'il se passe. Mais nous notons que ce module est parfait pour créer son propre CarPlay.
+

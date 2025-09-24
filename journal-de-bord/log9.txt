@@ -1,0 +1,22 @@
+Mercredi 30 Juillet
+~2h30
+
+tentative d'installation de OLLAMA (ENCORE UNE FOIS ça ne marche pas).
+(on a essayer d'autre façon d'installer pendant 3h)
+
+Donc on a aussi commencé a dev un serveur flask pour voir un retour en direct de ce que peu detecter yolo.
+
+---
+J'emene le raspberry chez moi pour installer ollama et pull plusieurs modeles compatibles avec l'utilisation de fonctions (tools). 
+
+admin@raspberrypi:~ $ ollama list
+NAME                ID              SIZE      MODIFIED
+smollm2:1.7b        cef4a1e09247    1.8 GB    45 hours ago
+qwen2.5:0.5b        a8b0c5157701    397 MB    46 hours ago
+llama3.2:3b         a80c4f17acd5    2.0 GB    46 hours ago
+qwen3:0.6b          7df6b6e09427    522 MB    46 hours ago
+gemma3n:e2b         719372f8c7de    5.6 GB    46 hours ago
+deepseek-r1:1.5b    e0979632db5a    1.1 GB    2 days ago
+gemma3:1b           8648f39daa8f    815 MB    2 days ago
+
+(gemma n'est pas fais pour l'utilisation de tools mais il est tres performent donc si il prend de bonnes decisions on pourrais le finetune pour l'habituer a l'utilisation de tools)

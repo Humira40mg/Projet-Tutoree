@@ -1,0 +1,19 @@
+Mercredi 13 Aout
+~2h
+
+On a decidé de seulement garder yolov8n pour la detection d'objet. Il tournera sur le AI HAT+, et on a décidé de ne pas utiliser de modele d'estimation de profondeur par camera, car on a déja le lidar, on ne va pas surcharger le pauvre raspberry. On doit  être raisonnable sur l'utilisation de programmes sur le raspberry pi car on dois faire en sorte de faire tourner le llm dessus, et yolo sur le chapeau. C'est un peu comme si on voulais faire rentrer un éléphant dans une boite a chaussures.
+
+Installation de llama3.2:1b (on avait le 3b mais plus lent, on testera les deux).
+
+BUT DES PROCHAINES SEANCES : FineTune Yolov8n, Créer un nouveau script de test en conditions qui simulerai les conditions reels basé sur une utilisation consecutive (et non pas un one time use). Donc fournir les informations récoltées par les différents instruments (Yolo, lidar, gps) les traduire en un message comprehensible par un humain lambda (car on va considérer que les llm utilisés sont entrainés sur des conversation entre humain normaux (ils n'ont pas été entrainé sur data brute (on pourrai le fine tune mais on va écarter cette solution pour le moment (on va d'abord voir de quoi ils sont capables))) cela favoriserai la comprehension et le llm repondera peut être avec de meilleurs decision.
+
+Liste des llm à  tester:
+
+NAME                ID              SIZE      MODIFIED		SPEC
+llama3.2:1b         baf6a787fdff    1.3 GB    13 minutes ago    tools
+smollm2:1.7b        cef4a1e09247    1.8 GB    8 days ago 	tools
+qwen2.5:0.5b        a8b0c5157701    397 MB    8 days ago	tools
+llama3.2:3b         a80c4f17acd5    2.0 GB    8 days ago	tools
+qwen3:0.6b          7df6b6e09427    522 MB    8 days ago	tools, thinking
+deepseek-r1:1.5b    e0979632db5a    1.1 GB    9 days ago	tools, thinking
+gemma3:1b           8648f39daa8f    815 MB    9 days ago	N/A

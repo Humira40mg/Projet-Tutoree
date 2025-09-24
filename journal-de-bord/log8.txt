@@ -1,0 +1,29 @@
+Mardi 29 Juillet
+~3h
+
+Mise en route et installation des dépendences pour faire fonctionner le AI HAT+.
+
+On a réalisé que le AI HAT+ était uniquement fait pour tout ce qui est modèle de detection par camera. Donc faire tourner des modeles de generation plus vite n'est pas vraiment envisageable. On pense qu'il y'a une voie a explorer sur gemma3:1b qui est le plus petit modele avec une excellente qualité de réponses. Ce modèle ne peux pas annalyser d'images, MAIS si on arrive a contextualiser toutes les données récupérée en TEXTE alors on pourrais vraiment arriver à quelquechose d'intéressant (probablement).
+
+Bricolage pour installation de cameras. J'ai du tout redémonter 3 fois donc OUI JE LE NOTE >:C
+
+Creation d'un serveur flask pour pouvoir acceder aux images de la camera depuis nos ordinateurs (pour voir si ça marche bien).
+
+Tentatives de reinstallation de ollama (oui vu qu'on a viré le module NVMe). Le télechargement crash car problèmes de connections.
+
+Exemple :
+	admin@raspberrypi:~ $ curl -fsSL https://ollama.com/install.sh | sh
+	>>> Cleaning up old version at /usr/local/lib/ollama
+	>>> Installing ollama to /usr/local
+	>>> Downloading Linux arm64 bundle
+	##################################                                        47.7%curl: (92) HTTP/2 stream 1 was not closed cleanly: PROTOCOL_ERROR (err 1)
+
+
+	gzip: stdin: unexpected end of file
+	tar: Unexpected EOF in archive
+	tar: Unexpected EOF in archive
+	tar: Error is not recoverable: exiting now
+	
+On vois que la connexion HTTPS a été interrompue. C'est la troisième fois là. je pense qu'on réessera demain.
+
+Demain on se concentrera sur installation de gemma3:1b et d'un modèle de detection qui fonctionne sur le chapeau.

@@ -1,0 +1,10 @@
+Mercredi 2 juillet
+1h
+
+Réunion pour discuter des enjeux.
+Notre projet a pour but premier d'installer et de faire tourner un modele de LLM IA sur un raspberry 5 16G.
+Nous devons chercher trouver un equilibrage entre performence et ressources demandée (le but n'est pas de faire exploser la carte haha).
+Après la réunion nous avons monter un module sur la carte permettant d'y ajouter plus de RAM. 
+Probleme trouver : Le connecteur utilisé pour relier le rasp et le module est unique. 
+Alors on ne peux pas ajouter le Chapeau (le gpu ia) si le module de RAM est branché. 
+Nous avins vu qu'il existe une sorte de switch permettant la duplication de se port.

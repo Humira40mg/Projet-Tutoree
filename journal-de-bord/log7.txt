@@ -1,0 +1,8 @@
+Vendredi 25 Juillet
+~tests auto (2h)
+
+Lancement des tests automatiques sur granite3.2-vision, moondream, gemma3:4b.
+
+Après 2h nous sommes revenu, et granite3.2 n'avais pas fini d'analyser les 9 images. On a donc conclu que ce genre de modèles était impossible a faire tourner dans le cadre de nos attentes sans GPU. 
+
+On a annulé les tests, et on a monter le module AI HAT+ Hailo.
